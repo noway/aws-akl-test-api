@@ -1,0 +1,10 @@
+{
+  "name": "aws-akl-test-api",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
+}

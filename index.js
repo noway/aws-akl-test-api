@@ -1,5 +1,6 @@
 const dgram = require("dgram");
 const server = dgram.createSocket("udp4");
+require("dotenv").config();
 
 const clients = [];
 
@@ -33,5 +34,4 @@ server.on("listening", () => {
   console.log(`server listening ${address.address}:${address.port}`);
 });
 
-server.bind(65536);
-// server listening on port 65536
+server.bind(process.env.PORT);
