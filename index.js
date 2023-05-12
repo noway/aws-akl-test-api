@@ -22,19 +22,10 @@ server.on('message', (msg, rinfo) => {
   else {
 	  const coords = decode(msg);
 	  console.log(`${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}`)
-	  //console.log(`server got: ${coords} from ${rinfo.address}:${rinfo.port}`);
 	  for(var i = 0; i < clients.length; i++) {
 		  var client = clients[i];
-		  //if (rinfo.address !== client[0] && rinfo.port !== client[1]) {
 			  server.send(msg, client[1], client[0])
-		  //}
 	  }
-	  //if (msg.toString() === 'ping') {
-	  //  server.send('pong', rinfo.port, rinfo.address, (err) => {
-	  //    if (err) console.log(err);
-	  //    console.log('Sent: pong');
-	  //  });
-	  //}
   }
 });
 
