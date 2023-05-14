@@ -5,8 +5,8 @@ require("dotenv").config();
 const clients = [];
 
 function decode(buffer) {
-  var x = buffer.readDoubleBE(1);
-  var y = buffer.readDoubleBE(9);
+  var x = buffer.readFloatBE(1);
+  var y = buffer.readFloatBE(5);
   return [x, y];
 }
 
@@ -21,7 +21,7 @@ server.on("message", (msg, rinfo) => {
     clients.push([rinfo.address, rinfo.port]);
   } else {
     const coords = decode(msg);
-    console.log(`${coords[0].toFixed(4)}, ${coords[1].toFixed(4)}`);
+    console.log(`${coords[0].toFixed(3)}, ${coords[1].toFixed(3)}`);
     for (var i = 0; i < clients.length; i++) {
       var client = clients[i];
       server.send(msg, client[1], client[0]);
